@@ -8,3 +8,8 @@ body {
   margin: 20% 5%;
   padding: 10%;
 }
+
+.table-bordered, tr, td, tbody, th, thead, .thead, .trow {
+  margin-top: 10px;
+  border: 4px solid rgb(214, 208, 208);
+}
