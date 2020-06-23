@@ -39,7 +39,7 @@ function getBeers(e) {
         row.append(beerName, beerAbv, beerIbu, beerDescription, beerImage);
         tbody.append(row);
       }
-      search.removeEventListener('click', getBeers);
+      search.removeEventListener('click', start);
       resetButton.addEventListener("click", resetPage);
     },
     error: error => {
