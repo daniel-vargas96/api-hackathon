@@ -5,11 +5,26 @@ body {
   align-items: center;
   background-color: #E3BAA2;
   border: 2px solid black;
-  margin: 20% 5%;
-  padding: 10%;
+  margin: 5%;
+  padding: 5% 10%;
+}
+
+.header-subtitle {
+  font-style: italic;
+  font-weight: 300;
 }
 
 .table-bordered, tr, td, tbody, th, thead, .thead, .trow {
-  margin-top: 10px;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   border: 4px solid rgb(214, 208, 208);
+
+}
+
+.table-title {
+  font-weight: 300;
+  font-style: italic;
+  margin-top: 3rem;
 }
