@@ -63,6 +63,9 @@ function initMap() {
       };
       // The map, centered at California
       const map = new google.maps.Map(document.getElementById('map'), options);
+      //ADD MARKER FUNCTION
+
+
       // Initialize and add the map
       let cityArray = [];
       for (let i = 0; i < data.length; i++) {
@@ -72,15 +75,18 @@ function initMap() {
         cityArray.push(cityCoords);
       }
       for (let i = 0; i < cityArray.length; i++) {
-        const singleCity = cityArray[i];
-        const marker = new google.maps.Marker({
-          position: { lat: singleCity[0], lng: singleCity[1] }, map: map, icon: "http://icons.iconarchive.com/icons/icons-land/vista-map-markers/32/Map-Marker-Ball-Pink-icon.png"
+        var singleCity = cityArray[i];
+        var marker = new google.maps.Marker({
+          position: {lat: Number(singleCity[0]), lng: Number(singleCity[1])},
+          map: map,
+          icon: "http://icons.iconarchive.com/icons/icons-land/vista-map-markers/32/Map-Marker-Ball-Pink-icon.png"
         });
       }
+      return cityArray;
     },
     error: error => {
       console.error(error);
-    },
+    }
   })
 }
 
