@@ -9,18 +9,36 @@
   <body>
     <header>
       <h1>BrewMaps</h1>
-      <h5>Find California Breweries
+      <h5 class="header-subtitle">Find California Breweries
       and pair a beer to go with your pizza</h5>
     </header>
     <main>
+      <div id="btns">
+        <button class="btn btn-primary" id="search">Search</button>
+      </div>
+      <div id="map"></div>
       <div>
-        <a href="mapPage.html"><button class="btn btn-primary">Search</button></a>
+        <h2 class="table-title">Beers To Pair With Your Pizza</h2>
+        <table class="table table-bordered">
+          <thead class="thead">
+            <tr class="trow">
+              <th>Beer Name</th>
+              <th>ABV</th>
+              <th>IBU</th>
+              <th>Description</th>
+              <th>Image</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+
+          </tbody>
+        </table>
       </div>
     </main>
-
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVS7LK5fK8PsA0nA9Ejl0xGkOwy-GEusE&callback=initMap&libraries=&v=weekly"
       defer></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script src="app.js"></script>
   </body>
 </html>
