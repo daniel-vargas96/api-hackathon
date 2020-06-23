@@ -1,5 +1,5 @@
-let tbody = document.getElementById("tableBody");
-let search = document.getElementById("search");
+const tbody = document.getElementById("tableBody");
+const search = document.getElementById("search");
 const buttonParent = document.getElementById("btns");
 const mapView = document.querySelector(".hidden");
 search.addEventListener("click", start);
@@ -16,12 +16,12 @@ function getBeers(e) {
       resetButton.className = "btn btn-danger";
       buttonParent.append(resetButton);
       for (let i = 0; i < data.length; i++) {
-        let row = document.createElement('tr');
-        let beerName = document.createElement('td');
-        let beerAbv = document.createElement('td');
-        let beerIbu = document.createElement('td');
-        let beerDescription = document.createElement('td');
-        let beerImage = document.createElement('td');
+        const row = document.createElement('tr');
+        const beerName = document.createElement('td');
+        const beerAbv = document.createElement('td');
+        const beerIbu = document.createElement('td');
+        const beerDescription = document.createElement('td');
+        const beerImage = document.createElement('td');
 
 
         beerName.textContent = data[i].name;
@@ -61,13 +61,13 @@ function initMap() {
         zoom: 5.5,
         center: { lat: 37.2551, lng: -119.61752 }
       };
-      // The map, centered at California
+
+      //INITIALIZE AND ADD MAP
       const map = new google.maps.Map(document.getElementById('map'), options);
-      //ADD MARKER FUNCTION
 
-
-      // Initialize and add the map
-      let cityArray = [];
+      //EXTRACT LAT/LONG COORIDINATES FROM BREWERY API AND INSERT
+      //INTO GOOGLE MAPS AS MARKERS
+      const cityArray = [];
       for (let i = 0; i < data.length; i++) {
         const latitude = data[i].latitude;
         const longitude = data[i].longitude;
@@ -75,8 +75,8 @@ function initMap() {
         cityArray.push(cityCoords);
       }
       for (let i = 0; i < cityArray.length; i++) {
-        var singleCity = cityArray[i];
-        var marker = new google.maps.Marker({
+        const singleCity = cityArray[i];
+        const marker = new google.maps.Marker({
           position: {lat: Number(singleCity[0]), lng: Number(singleCity[1])},
           map: map,
           icon: "http://icons.iconarchive.com/icons/icons-land/vista-map-markers/32/Map-Marker-Ball-Pink-icon.png"
@@ -93,7 +93,7 @@ function initMap() {
 //RESETS MAP AND TABLE
 function resetPage() {
   tbody.textContent = '';
-  let resetButton = document.querySelector('.btn-danger');
+  const resetButton = document.querySelector('.btn-danger');
   resetButton.remove();
   search.addEventListener('click', start);
 
