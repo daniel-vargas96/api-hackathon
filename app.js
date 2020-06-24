@@ -70,6 +70,7 @@ function initMap() {
       //INITIALIZE AND ADD MAP
       const map = new google.maps.Map(document.getElementById('map'), options);
 
+
       //EXTRACT LAT/LONG COORIDINATES FROM BREWERY API AND INSERT
       //INTO GOOGLE MAPS AS MARKERS
       const cityArray = [];
@@ -80,9 +81,10 @@ function initMap() {
         cityArray.push(cityCoords);
       }
       for (let i = 0; i < cityArray.length; i++) {
+
         const singleCity = cityArray[i];
         marker = new google.maps.Marker({
-          position: {lat: Number(singleCity[0]), lng: Number(singleCity[1])},
+          position: { lat: Number(singleCity[0]), lng: Number(singleCity[1]) },
           map: map,
           icon: "http://icons.iconarchive.com/icons/icons-land/vista-map-markers/32/Map-Marker-Ball-Pink-icon.png"
         });
@@ -95,13 +97,12 @@ function initMap() {
           `<p><strong>Website: </strong><a href=${data[i].website_url}>${data[i].website_url}</a></p>` +
           '</div>' +
           '</div>';
-
         const infowindow = new google.maps.InfoWindow({
           content: contentString
         });
         marker.addListener('click', function (event) {
-          console.log(event.target);
-          infowindow.open(map, marker);
+          infowindow.open(map, this);
+          setTimeout(function () { infowindow.close(); }, 5000);
         });
       }
       return cityArray;
