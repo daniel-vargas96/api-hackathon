@@ -74,7 +74,6 @@ function initMap() {
       //INTO GOOGLE MAPS AS MARKERS
       const cityArray = [];
       for (let i = 0; i < data.length; i++) {
-
         const latitude = data[i].latitude;
         const longitude = data[i].longitude;
         const cityCoords = [latitude, longitude];
@@ -101,7 +100,7 @@ function initMap() {
           content: contentString
         });
         marker.addListener('click', function (event) {
-          console.log(event.target)
+          console.log(event.target);
           infowindow.open(map, marker);
         });
       }
