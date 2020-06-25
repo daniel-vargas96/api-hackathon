@@ -2,7 +2,8 @@
 <html>
 
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&family=Roboto&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.css" rel="stylesheet">
@@ -11,7 +12,22 @@
 </head>
 
 <body>
+    <div class="statsText hidden1" id="helpPage">
+        <button class="exitButton" id="exitBtn">X</button>
+        <h6>Whats is ABV?</h6>
+        <p>Alcohol by volume is a standard measure of how much alcohol is contained in a given volume of an alcoholic beverage. It
+        is defined as the number of millilitres of pure ethanol present in 100 mL of solution at 20 °C. The ABV
+        standard is used worldwide.</p>
+        <hr>
+        <h6>What is IBU?</h6>
+        <p>The IBU's in beer refers to the International Bitterness Unit scale which is a standard for measuring the amount of hops
+        in one's beer. For example, a hoppy beer like an IPA will have a very high IBU rating, like a 75, while a malty beer
+        like a stout will usually (but not always) have a low IBU rating at around a 30.</p>
+    </div>
     <div class="container">
+        <div class="statsInfo">
+            <button class="infoBtn" id="helpButton">Help</button>
+        </div>
         <header>
             <h1>BrewMaps</h1>
             <h5 class="header-subtitle">Find California Breweries and pair a beer to go with your pizza</h5>
@@ -27,7 +43,7 @@
                     <thead class="thead">
                         <tr class="trow">
                             <th>Beer Name</th>
-                            <th>ABV</th>
+                            <th>ABV %</th>
                             <th>IBU</th>
                             <th>Description</th>
                             <th>Image</th>
@@ -42,7 +58,9 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVS7LK5fK8PsA0nA9Ejl0xGkOwy-GEusE&libraries=&v=weekly" defer></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVS7LK5fK8PsA0nA9Ejl0xGkOwy-GEusE&libraries=&v=weekly"
+        defer></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script src="app.js"></script>
 </body>
