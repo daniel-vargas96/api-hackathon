@@ -11,16 +11,18 @@ body {
 }
 
 .infoBtn {
+    border-style: none;
     padding: .4rem 1rem;
     color: white;
     border-radius: 5px;
-    border-style: none;
-    background-color: rgb(199, 133, 201);
+    background-color: rgba(199, 133, 201, 0);
 }
 
 .infoBtn:hover {
-    background-color: rgb(53, 0, 78);
+    border-radius: 0%;
     color: white;
+    box-shadow:rgba(0,0,0,0.7) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+
 }
 
 .statsText {
@@ -56,10 +58,10 @@ hr {
 
 
 header {
-    margin: 5%;
+    /* margin: 5%; */
     border-radius: 20px;
-    background: url("http://wallpapercave.com/wp/FoaZl4N.jpg") center no-repeat;
-    background-size: 100vw 90vh;
+    /* background: url("http://wallpapercave.com/wp/FoaZl4N.jpg") center no-repeat;
+    background-size: 100vw 90vh; */
     padding: 3%;
     color: antiquewhite;
 }
@@ -132,8 +134,7 @@ thead,
 }
 
 #map {
-    border: 20px solid rgb(162, 154, 154);
-    border-radius: 20px;
+    border: 20px solid rgb(101, 63, 63);
     position: relative;
     justify-content: center;
     align-items: center;
