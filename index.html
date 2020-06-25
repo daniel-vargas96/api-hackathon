@@ -1,44 +1,50 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css" />
     <title>API Hackathon - BrewMaps</title>
-  </head>
-  <body>
-    <header>
-      <h1>BrewMaps</h1>
-      <h5 class="header-subtitle">Find California Breweries
-      and pair a beer to go with your pizza</h5>
-    </header>
-    <main>
-      <div id="btns">
-        <button class="btn btn-primary" id="search">Search</button>
-      </div>
-      <div id="map" class="hidden"></div>
-      <div>
-        <h2 class="table-title">Beers To Pair With Your Pizza</h2>
-        <table class="table table-bordered">
-          <thead class="thead">
-            <tr class="trow">
-              <th>Beer Name</th>
-              <th>ABV</th>
-              <th>IBU</th>
-              <th>Description</th>
-              <th>Image</th>
-            </tr>
-          </thead>
-          <tbody id="tableBody">
+</head>
 
-          </tbody>
-        </table>
-      </div>
-    </main>
+<body>
+    <div class="container">
+        <header>
+            <h1>BrewMaps</h1>
+            <h5 class="header-subtitle">Find California Breweries and pair a beer to go with your pizza</h5>
+        </header>
+        <main>
+            <div id="btns">
+                <button class="btn btn-primary" id="search">Search</button>
+            </div>
+            <div id="map" class="hidden"></div>
+            <div>
+                <h2 class="table-title">Beers To Pair With Your Pizza</h2>
+                <table class="table table-bordered">
+                    <thead class="thead">
+                        <tr class="trow">
+                            <th>Beer Name</th>
+                            <th>ABV</th>
+                            <th>IBU</th>
+                            <th>Description</th>
+                            <th>Image</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVS7LK5fK8PsA0nA9Ejl0xGkOwy-GEusE&libraries=&v=weekly"
-      defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVS7LK5fK8PsA0nA9Ejl0xGkOwy-GEusE&libraries=&v=weekly" defer></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script src="app.js"></script>
-  </body>
+</body>
+
 </html>

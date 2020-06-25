@@ -1,3 +1,6 @@
+/*    BrewMaps Application Utilizing three API's.
+      Code is displayed below.   */
+
 const tbody = document.getElementById("tableBody");
 const search = document.getElementById("search");
 const buttonParent = document.getElementById("btns");
@@ -14,7 +17,6 @@ function getBeers(e) {
     method: "GET",
     url: "https://api.punkapi.com/v2/beers?food=pizza",
     success: data => {
-      console.log(data);
       let resetButton = document.createElement('button');
       resetButton.textContent = "Reset";
       resetButton.className = "btn btn-danger";
@@ -36,13 +38,16 @@ function getBeers(e) {
         beerImage.style.backgroundPosition = "center";
         beerImage.style.backgroundSize = "25px 60px";
         beerImage.style.backgroundRepeat = "no-repeat";
+
+        //CONDITIONAL CHECKING IF NO IMAGES ARE PROVIDED
         if (data[i].image_url === null) {
           beerImage.textContent = "N/A";
         }
-
+        //DISPLAY TABLE ON BROWSER
         row.append(beerName, beerAbv, beerIbu, beerDescription, beerImage);
         tbody.append(row);
       }
+      //REMOVE CLICK EVENT FROM SEARCH BUTTON, AND ADD CLICK EVENT FOR RESET BUTTON
       search.removeEventListener('click', start);
       resetButton.addEventListener("click", resetPage);
     },
@@ -58,10 +63,10 @@ function initMap() {
     method: "GET",
     url: "https://api.openbrewerydb.org/breweries?by_state=california&per_page=50",
     success: data => {
-      console.log(data);
-      //remove hidden map
+      //REMOVE HIDDEN MAP
       mapView.classList.remove("hidden");
-      //location
+
+      //LOCATION OF THE CENTER OF THE MAP
       const options = {
         zoom: 5.5,
         center: { lat: 37.2551, lng: -119.61752 }
@@ -70,18 +75,19 @@ function initMap() {
       //INITIALIZE AND ADD MAP
       const map = new google.maps.Map(document.getElementById('map'), options);
 
-
       //EXTRACT LAT/LONG COORIDINATES FROM BREWERY API AND INSERT
       //INTO GOOGLE MAPS AS MARKERS
       const cityArray = [];
+
+      //FOR LOOP ITERATING THROUGH RECEIVED DATA
       for (let i = 0; i < data.length; i++) {
         const latitude = data[i].latitude;
         const longitude = data[i].longitude;
         const cityCoords = [latitude, longitude];
         cityArray.push(cityCoords);
       }
+      //FOR LOOP ITERATING THROUGH RETURNED LATITUDE/LONGITUDE ARRAY
       for (let i = 0; i < cityArray.length; i++) {
-
         const singleCity = cityArray[i];
         marker = new google.maps.Marker({
           position: { lat: Number(singleCity[0]), lng: Number(singleCity[1]) },
@@ -89,7 +95,8 @@ function initMap() {
           icon: "http://icons.iconarchive.com/icons/icons-land/vista-map-markers/32/Map-Marker-Ball-Pink-icon.png"
         });
 
-        var contentString = '<div id="content">' +
+        //INFO-WINDOW SENTENCE CONCATENATION
+        const contentString = '<div id="content">' +
           `<h1 id="firstHeading" class="firstHeading">${data[i].name}</h1>` +
           '<div id="bodyContent">' +
           `<p><strong>Address: </strong><b>${data[i].street}, ${data[i].state}</b></p>` +
@@ -97,9 +104,11 @@ function initMap() {
           `<p><strong>Website: </strong><a href=${data[i].website_url}>${data[i].website_url}</a></p>` +
           '</div>' +
           '</div>';
+        //INFO WINDOW INSTANTIATION
         const infowindow = new google.maps.InfoWindow({
           content: contentString
         });
+        //CLICK EVENT LISTENER FOR EACH MARKER SHOWN ON MAP
         marker.addListener('click', function (event) {
           infowindow.open(map, this);
           setTimeout(function () { infowindow.close(); }, 5000);
@@ -112,9 +121,6 @@ function initMap() {
     }
   })
 }
-
-//INFO WINDOW
-
 
 //RESETS MAP AND TABLE
 function resetPage() {
