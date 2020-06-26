@@ -124,7 +124,6 @@ function initMap(data) {
       '<div id="bodyContent">' +
       `<p><strong>Address: </strong><b>${data[i].street}, ${data[i].state}</b></p>` +
       `<p><strong>Phone #: </strong><b>${data[i].phone}</b></p>` +
-      `<p><strong>Website: </strong><a href=${data[i].website_url} target="_blank">${data[i].website_url}</a></p>` +
       '</div>' +
       '</div>';
     //INFO WINDOW INSTANTIATION
