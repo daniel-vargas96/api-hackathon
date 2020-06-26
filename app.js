@@ -78,19 +78,14 @@ function getBeers(data) {
   }
   //REMOVE CLICK EVENT FROM SEARCH BUTTON, AND ADD CLICK EVENT FOR RESET BUTTON
   search.removeEventListener('click', start);
+  search.classList.add("hidden1");
   resetButton.addEventListener("click", resetPage);
-
 
 
 }
 
 //GET BREWERY INFORMATION AND LOADS ONTO MAP WITH MARKERS
 function initMap(data) {
-  //LOADING ICON
-  loadingIcon.classList.remove("hidden1");
-  setTimeout(() => {
-    loadingIcon.classList.add("hidden");
-  }, 2000);
   //REMOVE HIDDEN MAP
   mapView.classList.remove("hidden");
 
@@ -141,9 +136,13 @@ function initMap(data) {
       infowindow.open(map, this);
       setTimeout(function () { infowindow.close(); }, 5000);
     });
+    //ONCE MAP IS FINISHED LOADING HIDE LOADING ICON
+    loadingIcon.classList.add("hidden1");
   }
   return cityArray;
 }
+
+
 
 
 //RESETS MAP AND TABLE
@@ -151,6 +150,7 @@ function resetPage() {
   tbody.textContent = '';
   const resetButton = document.querySelector('.btn-danger');
   resetButton.remove();
+  search.classList.remove("hidden1");
   search.addEventListener('click', start);
 
   //ADD HIDDEN CLASS BACK TO MAP
@@ -169,6 +169,7 @@ helpButton.addEventListener('click', () => {
 
 //CALLBACK FUNCTION FOR THE SEARCH BUTTON EVENT LISTENER
 function start() {
+  loadingIcon.classList.remove("hidden1");
   handleBeersCall();
   handleBreweriesCall();
 }
