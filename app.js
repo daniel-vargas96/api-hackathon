@@ -120,7 +120,7 @@ function initMap(data) {
 
     //INFO-WINDOW SENTENCE CONCATENATION
     const contentString = '<div id="content">' +
-      `<h1 id="firstHeading" class="firstHeading">${data[i].name}</h1>` +
+      `<h4 id="firstHeading" class="firstHeading">${data[i].name}</h4>` +
       '<div id="bodyContent">' +
       `<p><strong>Address: </strong><b>${data[i].street}, ${data[i].state}</b></p>` +
       `<p><strong>Phone #: </strong><b>${data[i].phone}</b></p>` +
