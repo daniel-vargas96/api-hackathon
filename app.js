@@ -50,6 +50,7 @@ function getBeers(data) {
   resetButton.textContent = "Reset";
   resetButton.className = "btn btn-danger";
   buttonParent.append(resetButton);
+  
   for (let i = 0; i < data.length; i++) {
     const row = document.createElement('tr');
     const beerName = document.createElement('td');
@@ -126,15 +127,18 @@ function initMap(data) {
       `<p><strong>Phone #: </strong><b>${data[i].phone}</b></p>` +
       '</div>' +
       '</div>';
+
     //INFO WINDOW INSTANTIATION
     const infowindow = new google.maps.InfoWindow({
       content: contentString
     });
+
     //CLICK EVENT LISTENER FOR EACH MARKER SHOWN ON MAP
     marker.addListener('click', function (event) {
       infowindow.open(map, this);
       setTimeout(function () { infowindow.close(); }, 5000);
     });
+
     //ONCE MAP IS FINISHED LOADING HIDE LOADING ICON
     loadingIcon.classList.add("hidden1");
   }

@@ -50,7 +50,7 @@ hr {
     position: relative;
     left: 6rem;
     border-style: none;
-    background-color: rgb(32, 111, 104);
+    background-color: rgba(32, 111, 104, 0);
 }
 
 .exitButton:hover {
