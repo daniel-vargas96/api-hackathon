@@ -9,6 +9,7 @@ const mapView = document.querySelector(".hidden");
 const helpButton = document.getElementById("helpButton");
 const helpPage = document.getElementById("helpPage");
 const exit = document.getElementById("exitBtn");
+const loadingIcon = document.getElementById('loading-icon');
 let marker = null;
 search.addEventListener("click", start);
 
@@ -78,10 +79,18 @@ function getBeers(data) {
   //REMOVE CLICK EVENT FROM SEARCH BUTTON, AND ADD CLICK EVENT FOR RESET BUTTON
   search.removeEventListener('click', start);
   resetButton.addEventListener("click", resetPage);
+
+
+
 }
 
 //GET BREWERY INFORMATION AND LOADS ONTO MAP WITH MARKERS
 function initMap(data) {
+  //LOADING ICON
+  loadingIcon.classList.remove("hidden1");
+  setTimeout(() => {
+    loadingIcon.classList.add("hidden");
+  }, 2000);
   //REMOVE HIDDEN MAP
   mapView.classList.remove("hidden");
 
@@ -155,6 +164,8 @@ helpButton.addEventListener('click', () => {
     helpPage.classList.add("hidden1");
   });
 })
+
+
 
 //CALLBACK FUNCTION FOR THE SEARCH BUTTON EVENT LISTENER
 function start() {
