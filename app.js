@@ -10,6 +10,8 @@ const helpButton = document.getElementById("helpButton");
 const helpPage = document.getElementById("helpPage");
 const exit = document.getElementById("exitBtn");
 const loadingIcon = document.getElementById('loading-icon');
+const tableHeader = document.getElementById("table-header");
+const tableTitle = document.getElementById("table-title");
 let marker = null;
 search.addEventListener("click", start);
 
@@ -50,7 +52,7 @@ function getBeers(data) {
   resetButton.textContent = "Reset";
   resetButton.className = "btn btn-danger";
   buttonParent.append(resetButton);
-  
+
   for (let i = 0; i < data.length; i++) {
     const row = document.createElement('tr');
     const beerName = document.createElement('td');
@@ -80,6 +82,8 @@ function getBeers(data) {
   //REMOVE CLICK EVENT FROM SEARCH BUTTON, AND ADD CLICK EVENT FOR RESET BUTTON
   search.removeEventListener('click', start);
   search.classList.add("hidden1");
+  tableHeader.classList.remove("hidden1");
+  tableTitle.classList.remove("hidden1");
   resetButton.addEventListener("click", resetPage);
 
 
@@ -154,6 +158,8 @@ function resetPage() {
   const resetButton = document.querySelector('.btn-danger');
   resetButton.remove();
   search.classList.remove("hidden1");
+  tableHeader.classList.add("hidden1");
+  tableTitle.classList.add("hidden1");
   search.addEventListener('click', start);
 
   //ADD HIDDEN CLASS BACK TO MAP

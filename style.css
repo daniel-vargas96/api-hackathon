@@ -218,7 +218,7 @@ thead,
     }
 }
 
-/* IPAD SCREEN SIZE */
+/* IPAD PORTRAIT SCREEN SIZE */
 @media only screen and (max-width: 768px) and (min-height: 1024px) {
     body {
         background-size: 100%;
@@ -235,13 +235,16 @@ thead,
         width: 100%;
         height: 400px;
     }
+    .statsText {
+        top: 10rem;
+    }
 }
 
 /* IPAD LANDSCAPE SIZE */
 @media only screen and (max-width: 1024px) and (min-height: 768px) {
     .container {
         margin: 0;
-        top: 10rem;
+        top: 18rem;
         width: 80%;
     }
     .statsText {
