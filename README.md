@@ -4,6 +4,15 @@
 ## Live Demo: https://daniel-vargas96.github.io/api-hackathon/
 ![Live Demo](/images/API-HACKATHON.gif)
 
+## Technologies Used:
+* HTML5
+* CSS3
+* Bootstrap 4
+* Vanilla JS
+* Punk API
+* OpenBrewery DB API
+* Google Maps API
+
 ## Current Feature list:
 * User can press the search button to initiate the search for breweries and list of beers to pair with pizza
 * User can view a map of 50 breweries in the state of California
