@@ -140,6 +140,20 @@ thead,
     margin-top: 5%;
 }
 
+.error-modal {
+    background-color: rgb(231, 228, 228);
+    border-radius: 20px;
+    padding-bottom: 4rem;
+    padding-top: 4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    align-items: center;
+    position: absolute;
+    z-index: 1;
+    top: 20%;
+    left: 23%;
+}
+
 .hidden {
     display: none;
 }
@@ -152,7 +166,7 @@ thead,
 @media only screen and (max-width: 768px) {
     body {
         background-position: center;
-        background-size: 100vw 100vh;
+        background-size: 100%;
     }
     .container {
         position: relative;
@@ -175,6 +189,11 @@ thead,
 
     header {
         margin-top: 2rem;
+    }
+
+    .error-modal {
+        left: 0;
+        top: 0;
     }
 
     .statsText {
