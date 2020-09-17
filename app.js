@@ -12,9 +12,15 @@ const exit = document.getElementById("exitBtn");
 const loadingIcon = document.getElementById('loading-icon');
 const tableHeader = document.getElementById("table-header");
 const tableTitle = document.getElementById("table-title");
+const errorModal = document.querySelector(".error-modal");
+const errorButton = document.querySelector(".try-again-btn");
 let marker = null;
 search.addEventListener("click", start);
 
+errorButton.addEventListener('click', () => {
+  start();
+  errorModal.classList.add('hidden1');
+})
 
 
 //LOADS TABLE FOR BEERS TO PAIR WITH PIZZA
@@ -27,6 +33,8 @@ function handleBeersCall(e) {
     },
     error: error => {
       console.error(error);
+      errorModal.className = 'error-modal';
+      loadingIcon.classList.add('hidden1');
     }
   })
 }
@@ -41,6 +49,8 @@ function handleBreweriesCall() {
     },
     error: error => {
       console.error(error);
+      errorModal.className = 'error-modal';
+      loadingIcon.classList.add('hidden1');
     }
   });
 }
