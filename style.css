@@ -1,7 +1,10 @@
 body {
-    background: url('http://wallpapercave.com/wp/6bl6Eyt.jpg') center;
-    background-size: 100vw 100vh;
+    background: rgb(221,94,137);
+background: linear-gradient(144deg, rgba(221,94,137,1) 0%, rgba(247,187,151,1) 100%) no-repeat;
     font-family: 'Oswald', sans-serif;
+    width: 100vw;
+    height: 100vh;
+    background-size: 100vw 1000vh;
 }
 
 .statsInfo {
@@ -182,9 +185,10 @@ thead,
 }
 
 /* IPHONE 6, 7, 8 SCREEN SIZES */
-@media only screen and (min-width: 374px) and (max-height: 667px) {
+@media only screen and (max-width: 375px) and (max-height: 667px) {
     body {
-        background-size: 100%;
+        background-position: center;
+        background-size: 100vw 1400vh;
     }
 
     header {
@@ -207,7 +211,6 @@ thead,
         top: 5rem;
         left: 1.5rem;
         width: 90%;
-        height: 100%;
     }
     #map {
         position: relative;
@@ -217,18 +220,24 @@ thead,
     }
 }
 
-/* Phone Landscape */
-@media only screen and (max-width: 768px) and (max-height: 376px) {
+/* iPhone 6,7,8 Landscape */
+@media only screen
+and (min-device-width : 375px)
+and (max-device-width : 736px)
+and (orientation : landscape) {
+     body {
+        background-size: 100vw 2000vh;
+    }
+
     .container {
-        top: 0;
+        width: 100vw;
         margin: 0;
         position: relative;
-        left: 4rem;
-        width: 90%;
-        height: 100%;
+        top: 10%;
     }
+
     .statsText {
-        right: 10rem;
+        right: 20%;
     }
     #map {
         position: relative;
@@ -236,6 +245,31 @@ thead,
         height: 300px;
     }
 }
+
+/* IPHONE X PORTRAIT */
+@media only screen
+and (min-device-width : 375px)
+and (max-device-width : 812px)
+and (-webkit-device-pixel-ratio : 3)
+and (orientation : portrait) {
+    body {
+        background-size: 100vw 1400vh;
+    }
+   .statsText {
+        top: 2rem;
+        right: 2rem;
+    }
+
+    .container {
+        margin: 0;
+        position: relative;
+        top: 10rem;
+        width: 80%;
+    }
+
+}
+
+
 
 /* IPAD PORTRAIT SCREEN SIZE */
 @media only screen and (max-width: 768px) and (min-height: 1024px) {
@@ -247,7 +281,6 @@ thead,
         position: relative;
         top: 10rem;
         width: 80%;
-        height: 100%;
     }
      #map {
         position: relative;
@@ -256,24 +289,5 @@ thead,
     }
     .statsText {
         top: 10rem;
-    }
-}
-
-/* IPAD LANDSCAPE SIZE */
-@media only screen and (max-width: 1024px) and (min-height: 768px) {
-    .container {
-        margin: 0;
-        top: 18rem;
-        width: 80%;
-    }
-    .statsText {
-        top: 12rem;
-        right: 12rem;
-        width: 50%;
-        height: 50%;
-    }
-
-    #map {
-        width: 100;
     }
 }
