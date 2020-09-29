@@ -2,8 +2,6 @@ body {
     background: rgb(221,94,137);
 background: linear-gradient(144deg, rgba(221,94,137,1) 0%, rgba(247,187,151,1) 100%) no-repeat;
     font-family: 'Oswald', sans-serif;
-    width: 100vw;
-    height: 100vh;
     background-size: 100vw 1000vh;
 }
 
