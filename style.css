@@ -70,6 +70,11 @@ header {
     color: antiquewhite;
 }
 
+.load {
+    width: 100px;
+    height: 100px;
+}
+
 .container {
     position: relative;
     left: 12.5%;
