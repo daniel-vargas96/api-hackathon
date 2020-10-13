@@ -14,7 +14,7 @@
     <title>API Hackathon - BrewMaps</title>
 </head>
 
-<body class="gif-background">
+<body>
     <div class="statsText hidden1" id="helpPage">
         <button class="exitButton" id="exitBtn">X</button>
         <h6>Whats is ABV?</h6>
@@ -35,23 +35,24 @@
             <button class="infoBtn" id="helpButton">Help</button>
         </div>
         <header>
-            <h1>BrewMaps</h1>
+            <h1 class="title">BrewMaps</h1>
             <h5 class="header-subtitle">Find Breweries near you, and pair a beer to go with your pizza</h5>
         </header>
         <main>
             <div id="btns">
                 <i class="loading-icon hidden1" id="loading-icon">
-                    <img src="https://media0.giphy.com/media/l4FGAGR4nFz64HPwc/200w.webp?cid=ecf05e47a19d1fdde32366715cd948ec88034b6a3bc21a4c&rid=200w.webp">
+                    <img
+                        src="https://media0.giphy.com/media/l4FGAGR4nFz64HPwc/200w.webp?cid=ecf05e47a19d1fdde32366715cd948ec88034b6a3bc21a4c&rid=200w.webp">
                 </i>
                 <span class="d-flex justify-content-center align-items-center">
-                    <input id="search-bar" class="search-bar" type="text" placeholder="Search by State">
-                    <button class="btn btn-primary" id="search">
+                    <input id="search-bar" class="search-bar" type="text" placeholder="Search by City">
+                    <button class="btn btn-primary btn-lg" id="search">
                         <i class="fa fa-search" aria-hidden="true"></i>
                     </button>
                 </span>
-                    <p id="input-error" class="input-error hidden1">
-                        Please provide a valid state name.
-                    </p>
+                <p id="input-error" class="input-error hidden1">
+                    Please provide a valid state name.
+                </p>
                 <div class="error-modal hidden1">
                     <h2>Could not contact server, please try again later.</h2>
                     <button type="button" class="try-again-btn btn btn-primary mt-3">Try again</button>

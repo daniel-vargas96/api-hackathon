@@ -16,7 +16,6 @@ const errorModal = document.querySelector(".error-modal");
 const errorButton = document.querySelector(".try-again-btn");
 const searchBarInput = document.querySelector("#search-bar");
 const inputError = document.querySelector('#input-error');
-const backgroundImage = document.querySelector('.gif-background');
 let marker = null;
 let inputStateName;
 let lat;
@@ -24,14 +23,14 @@ let lng;
 const typeMap = ['alabama', 'alaska', 'american Samoa', 'arizona', 'arkansas', 'california', 'colorado', 'connecticut', 'delaware', 'district of Columbia', 'federated states of sicronesia', 'florida', 'georgia', 'guam', 'hawaii', 'idaho', 'illinois', 'indiana', 'iowa', 'kansas', 'kentucky', 'louisiana', 'maine', 'marshall islands', 'maryland', 'massachusetts', 'michigan', 'minnesota', 'mississippi', 'missouri', 'montana', 'nebraska', 'nevada', 'new hampshire', 'new jersey', 'new mexico', 'new york', 'north carolina', 'north dakota', 'northern mariana islands', 'ohio', 'oklahoma', 'oregon', 'palau', 'pennsylvania', 'puerto rico', 'rhode island', 'south carolina', 'south dakota', 'tennessee', 'texas', 'utah', 'vermont', 'virgin Island', 'virginia', 'washington', 'west virginia', 'wisconsin', 'wyoming'];
 
 
-function searchError() {
-  for (let i = 0; i < typeMap.length; i++) {
-    if (!typeMap.includes(inputStateName.toLowerCase())) {
-      inputError.classList.remove("hidden1");
-      resetPage();
-    }
-  }
-}
+// function searchError() {
+//   for (let i = 0; i < typeMap.length; i++) {
+//     if (!typeMap.includes(inputStateName.toLowerCase())) {
+//       inputError.classList.remove("hidden1");
+//       resetPage();
+//     }
+//   }
+// }
 
 search.addEventListener("click", start);
 searchBarInput.addEventListener("keyup", e => {
@@ -72,7 +71,7 @@ function handleBreweriesCall() {
 
   $.ajax({
     method: "GET",
-    url: `https://api.openbrewerydb.org/breweries?by_state=${inputStateName}&per_page=50`,
+    url: `https://api.openbrewerydb.org/breweries?by_city=${inputStateName}&per_page=50`,
     success: data => {
       initMap(data);
     },
@@ -140,7 +139,6 @@ function initMap(data) {
     }
   })
     .then(response => {
-      console.log(response.data.results[0].geometry.location);
       lat = response.data.results[0].geometry.location.lat;
       lng = response.data.results[0].geometry.location.lng;
       //REMOVE HIDDEN MAP
@@ -148,7 +146,7 @@ function initMap(data) {
 
       //LOCATION OF THE CENTER OF THE MAP
       const options = {
-        zoom: 5.5,
+        zoom: 13,
         disableDefaultUI: true
       };
 
@@ -213,7 +211,6 @@ function initMap(data) {
 //RESETS MAP AND TABLE
 function resetPage() {
   tbody.textContent = '';
-  backgroundImage.className = 'gif-background';
   const resetButton = document.querySelector('.btn-danger');
   resetButton.remove();
   search.classList.remove("hidden1");
@@ -238,8 +235,7 @@ helpButton.addEventListener('click', () => {
 
 //CALLBACK FUNCTION FOR THE SEARCH BUTTON EVENT LISTENER
 function start() {
-  backgroundImage.className = '';
-  searchError();
+  // searchError();
   loadingIcon.classList.remove("hidden1");
   inputError.classList.add("hidden");
   handleBeersCall();
