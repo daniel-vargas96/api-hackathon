@@ -15,9 +15,30 @@ const tableTitle = document.getElementById("table-title");
 const errorModal = document.querySelector(".error-modal");
 const errorButton = document.querySelector(".try-again-btn");
 const searchBarInput = document.querySelector("#search-bar");
+const inputError = document.querySelector('#input-error');
 let marker = null;
 let inputStateName;
+let lat;
+let lng;
+const typeMap = ['alabama', 'alaska', 'american Samoa', 'arizona', 'arkansas', 'california', 'colorado', 'connecticut', 'delaware', 'district of Columbia', 'federated states of sicronesia', 'florida', 'georgia', 'guam', 'hawaii', 'idaho', 'illinois', 'indiana', 'iowa', 'kansas', 'kentucky', 'louisiana', 'maine', 'marshall islands', 'maryland', 'massachusetts', 'michigan', 'minnesota', 'mississippi', 'missouri', 'montana', 'nebraska', 'nevada', 'new hampshire', 'new jersey', 'new mexico', 'new york', 'north carolina', 'north dakota', 'northern mariana islands', 'ohio', 'oklahoma', 'oregon', 'palau', 'pennsylvania', 'puerto rico', 'rhode island', 'south carolina', 'south dakota', 'tennessee', 'texas', 'utah', 'vermont', 'virgin Island', 'virginia', 'washington', 'west virginia', 'wisconsin', 'wyoming'];
+
+
+function searchError() {
+  for (let i = 0; i < typeMap.length; i++) {
+    if (!typeMap.includes(inputStateName.toLowerCase())) {
+      inputError.classList.remove("hidden1");
+      resetPage();
+    }
+  }
+}
+
 search.addEventListener("click", start);
+searchBarInput.addEventListener("keyup", e => {
+  if (e.keyCode === 13) {
+    e.preventDefault();
+    start();
+  }
+})
 
 errorButton.addEventListener('click', () => {
   start();
@@ -26,7 +47,7 @@ errorButton.addEventListener('click', () => {
 
 searchBarInput.addEventListener('input', e => {
   inputStateName = e.target.value;
-})
+});
 
 
 //LOADS TABLE FOR BEERS TO PAIR WITH PIZZA
@@ -110,85 +131,80 @@ function getBeers(data) {
 
 //GET BREWERY INFORMATION AND LOADS ONTO MAP WITH MARKERS
 function initMap(data) {
-  //REMOVE HIDDEN MAP
-  mapView.classList.remove("hidden");
 
-  //LOCATION OF THE CENTER OF THE MAP
-  const options = {
-    zoom: 5.5,
-    center: { lat: 37.2551, lng: -119.61752 }
-  };
-
-  //INITIALIZE AND ADD MAP
-  const map = new google.maps.Map(document.getElementById('map'), options);
-
-  const geocoder = new google.maps.Geocoder();
-  document.getElementById("search").addEventListener("click", () => {
-    geocodeAddress(geocoder, map);
-  });
-
-  //EXTRACT LAT/LONG COORIDINATES FROM BREWERY API AND INSERT
-  //INTO GOOGLE MAPS AS MARKERS
-  const cityArray = [];
-
-  //FOR LOOP ITERATING THROUGH RECEIVED DATA
-  for (let i = 0; i < data.length; i++) {
-    const latitude = data[i].latitude;
-    const longitude = data[i].longitude;
-    const cityCoords = [latitude, longitude];
-    cityArray.push(cityCoords);
-  }
-  //FOR LOOP ITERATING THROUGH RETURNED LATITUDE/LONGITUDE ARRAY
-  for (let i = 0; i < cityArray.length; i++) {
-    const singleCity = cityArray[i];
-    marker = new google.maps.Marker({
-      position: { lat: Number(singleCity[0]), lng: Number(singleCity[1]) },
-      map: map,
-      icon: "http://icons.iconarchive.com/icons/icons-land/vista-map-markers/32/Map-Marker-Ball-Pink-icon.png"
-    });
-
-    //INFO-WINDOW SENTENCE CONCATENATION
-    const contentString = '<div id="content">' +
-      `<h4 id="firstHeading" class="firstHeading">${data[i].name}</h4>` +
-      '<div id="bodyContent">' +
-      `<p><strong>Address: </strong><b>${data[i].street}, ${data[i].state}</b></p>` +
-      `<p><strong>Phone #: </strong><b>${data[i].phone}</b></p>` +
-      '</div>' +
-      '</div>';
-
-    //INFO WINDOW INSTANTIATION
-    const infowindow = new google.maps.InfoWindow({
-      content: contentString
-    });
-
-    //CLICK EVENT LISTENER FOR EACH MARKER SHOWN ON MAP
-    marker.addListener('click', function (event) {
-      infowindow.open(map, this);
-      setTimeout(function () { infowindow.close(); }, 5000);
-    });
-
-    //ONCE MAP IS FINISHED LOADING HIDE LOADING ICON
-    loadingIcon.classList.add("hidden1");
-  }
-  return cityArray;
-}
-
-
-// GEOCODE FUNCTION
-function geocodeAddress(geocoder, resultsMap) {
-  const address = inputStateName;
-  geocoder.geocode({ address: address }, (results, status) => {
-    if (status === "OK") {
-      resultsMap.setCenter(results[0].geometry.location);
-      new google.maps.Marker({
-        map: resultsMap,
-        position: results[0].geometry.location,
-      });
-    } else {
-      alert("Geocode was not successful for the following reason: " + status);
+  axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+    params: {
+      address: inputStateName,
+      key: 'AIzaSyD5QOed292-d68ZWYyTsOT63jtR7I84iTY'
     }
-  });
+  })
+    .then(response => {
+      console.log(response.data.results[0].geometry.location);
+      lat = response.data.results[0].geometry.location.lat;
+      lng = response.data.results[0].geometry.location.lng;
+      //REMOVE HIDDEN MAP
+      mapView.classList.remove("hidden");
+
+      //LOCATION OF THE CENTER OF THE MAP
+      const options = {
+        zoom: 5.5,
+      };
+
+      //INITIALIZE AND ADD MAP
+      const map = new google.maps.Map(document.getElementById('map'), options);
+      var latLng = new google.maps.LatLng(parseFloat(lat), parseFloat(lng));
+      map.setCenter(latLng);
+
+      //EXTRACT LAT/LONG COORIDINATES FROM BREWERY API AND INSERT
+      //INTO GOOGLE MAPS AS MARKERS
+      const cityArray = [];
+
+      //FOR LOOP ITERATING THROUGH RECEIVED DATA
+      for (let i = 0; i < data.length; i++) {
+        const latitude = data[i].latitude;
+        const longitude = data[i].longitude;
+        const cityCoords = [latitude, longitude];
+        cityArray.push(cityCoords);
+      }
+      //FOR LOOP ITERATING THROUGH RETURNED LATITUDE/LONGITUDE ARRAY
+      for (let i = 0; i < cityArray.length; i++) {
+        const singleCity = cityArray[i];
+        marker = new google.maps.Marker({
+          position: { lat: Number(singleCity[0]), lng: Number(singleCity[1]) },
+          map: map,
+          icon: "http://icons.iconarchive.com/icons/icons-land/vista-map-markers/32/Map-Marker-Ball-Pink-icon.png"
+        });
+
+        //INFO-WINDOW SENTENCE CONCATENATION
+        const contentString = '<div id="content">' +
+          `<h4 id="firstHeading" class="firstHeading">${data[i].name}</h4>` +
+          '<div id="bodyContent">' +
+          `<p><strong>Address: </strong><b>${data[i].street}, ${data[i].state}</b></p>` +
+          `<p><strong>Phone #: </strong><b>${data[i].phone}</b></p>` +
+          '</div>' +
+          '</div>';
+
+        //INFO WINDOW INSTANTIATION
+        const infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+
+        //CLICK EVENT LISTENER FOR EACH MARKER SHOWN ON MAP
+        marker.addListener('click', function (event) {
+          infowindow.open(map, this);
+          setTimeout(function () { infowindow.close(); }, 5000);
+        });
+
+        //ONCE MAP IS FINISHED LOADING HIDE LOADING ICON
+        loadingIcon.classList.add("hidden1");
+      }
+      return cityArray;
+    })
+    .catch(error => console.error(error));
+
+
 }
+
 
 
 
@@ -219,7 +235,9 @@ helpButton.addEventListener('click', () => {
 
 //CALLBACK FUNCTION FOR THE SEARCH BUTTON EVENT LISTENER
 function start() {
+  searchError();
   loadingIcon.classList.remove("hidden1");
+  inputError.classList.add("hidden");
   handleBeersCall();
   handleBreweriesCall();
 }

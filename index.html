@@ -36,17 +36,20 @@
         </div>
         <header>
             <h1>BrewMaps</h1>
-            <h5 class="header-subtitle">Find California Breweries and pair a beer to go with your pizza</h5>
+            <h5 class="header-subtitle">Find Breweries near you, and pair a beer to go with your pizza</h5>
         </header>
         <main>
             <div id="btns">
                 <i class="loading-icon fa fa-spinner fa-spin fa-5x hidden1" id="loading-icon"></i>
                 <span class="d-flex justify-content-center align-items-center">
-                    <input id="search-bar" class="search-bar" type="text" placeholder="Search">
+                    <input id="search-bar" class="search-bar" type="text" placeholder="Search by State">
                     <button class="btn btn-primary" id="search">
                         <i class="fa fa-search" aria-hidden="true"></i>
                     </button>
                 </span>
+                    <p id="input-error" class="input-error hidden1">
+                        Please provide a valid state name.
+                    </p>
                 <div class="error-modal hidden1">
                     <h2>Could not contact server, please try again later.</h2>
                     <button type="button" class="try-again-btn btn btn-primary mt-3">Try again</button>
@@ -78,11 +81,11 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVS7LK5fK8PsA0nA9Ejl0xGkOwy-GEusE&libraries=&v=weekly"
         defer></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
     <script src="app.js"></script>
 
 </body>
