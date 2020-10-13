@@ -16,6 +16,7 @@ const errorModal = document.querySelector(".error-modal");
 const errorButton = document.querySelector(".try-again-btn");
 const searchBarInput = document.querySelector("#search-bar");
 const inputError = document.querySelector('#input-error');
+const backgroundImage = document.querySelector('.gif-background');
 let marker = null;
 let inputStateName;
 let lat;
@@ -212,7 +213,7 @@ function initMap(data) {
 //RESETS MAP AND TABLE
 function resetPage() {
   tbody.textContent = '';
-  document.body.style.backgroundImage = "url('https://media1.giphy.com/media/61UvNbsIV7tuSrUGiQ/giphy.gif?cid=ecf05e47476a9031fc39fc994abc4fe8e1e92593d5903a4c&rid=giphy.gif')";
+  backgroundImage.className = 'gif-background';
   const resetButton = document.querySelector('.btn-danger');
   resetButton.remove();
   search.classList.remove("hidden1");
@@ -237,8 +238,8 @@ helpButton.addEventListener('click', () => {
 
 //CALLBACK FUNCTION FOR THE SEARCH BUTTON EVENT LISTENER
 function start() {
+  backgroundImage.className = '';
   searchError();
-  document.body.style.backgroundImage = "url('')";
   loadingIcon.classList.remove("hidden1");
   inputError.classList.add("hidden");
   handleBeersCall();
