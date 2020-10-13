@@ -14,12 +14,18 @@ const tableHeader = document.getElementById("table-header");
 const tableTitle = document.getElementById("table-title");
 const errorModal = document.querySelector(".error-modal");
 const errorButton = document.querySelector(".try-again-btn");
+const searchBarInput = document.querySelector("#search-bar");
 let marker = null;
+let inputStateName;
 search.addEventListener("click", start);
 
 errorButton.addEventListener('click', () => {
   start();
   errorModal.classList.add('hidden1');
+})
+
+searchBarInput.addEventListener('input', e => {
+  inputStateName = e.target.value;
 })
 
 
@@ -41,9 +47,10 @@ function handleBeersCall(e) {
 
 //LOADS MAP WITH MARKERS OF BREWERIES IN CALIFORNIA
 function handleBreweriesCall() {
+
   $.ajax({
     method: "GET",
-    url: "https://api.openbrewerydb.org/breweries?by_state=california&per_page=50",
+    url: `https://api.openbrewerydb.org/breweries?by_state=${inputStateName}&per_page=50`,
     success: data => {
       initMap(data);
     },
@@ -92,6 +99,8 @@ function getBeers(data) {
   //REMOVE CLICK EVENT FROM SEARCH BUTTON, AND ADD CLICK EVENT FOR RESET BUTTON
   search.removeEventListener('click', start);
   search.classList.add("hidden1");
+  searchBarInput.value = '';
+  searchBarInput.classList.add("hidden1");
   tableHeader.classList.remove("hidden1");
   tableTitle.classList.remove("hidden1");
   resetButton.addEventListener("click", resetPage);
@@ -112,6 +121,11 @@ function initMap(data) {
 
   //INITIALIZE AND ADD MAP
   const map = new google.maps.Map(document.getElementById('map'), options);
+
+  const geocoder = new google.maps.Geocoder();
+  document.getElementById("search").addEventListener("click", () => {
+    geocodeAddress(geocoder, map);
+  });
 
   //EXTRACT LAT/LONG COORIDINATES FROM BREWERY API AND INSERT
   //INTO GOOGLE MAPS AS MARKERS
@@ -160,6 +174,22 @@ function initMap(data) {
 }
 
 
+// GEOCODE FUNCTION
+function geocodeAddress(geocoder, resultsMap) {
+  const address = inputStateName;
+  geocoder.geocode({ address: address }, (results, status) => {
+    if (status === "OK") {
+      resultsMap.setCenter(results[0].geometry.location);
+      new google.maps.Marker({
+        map: resultsMap,
+        position: results[0].geometry.location,
+      });
+    } else {
+      alert("Geocode was not successful for the following reason: " + status);
+    }
+  });
+}
+
 
 
 //RESETS MAP AND TABLE
@@ -168,6 +198,7 @@ function resetPage() {
   const resetButton = document.querySelector('.btn-danger');
   resetButton.remove();
   search.classList.remove("hidden1");
+  searchBarInput.classList.remove("hidden1");
   tableHeader.classList.add("hidden1");
   tableTitle.classList.add("hidden1");
   search.addEventListener('click', start);

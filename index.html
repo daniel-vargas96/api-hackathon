@@ -41,8 +41,11 @@
         <main>
             <div id="btns">
                 <i class="loading-icon fa fa-spinner fa-spin fa-5x hidden1" id="loading-icon"></i>
-                <span>
-                    <button class="btn btn-primary" id="search">Search</button>
+                <span class="d-flex justify-content-center align-items-center">
+                    <input id="search-bar" class="search-bar" type="text" placeholder="Search">
+                    <button class="btn btn-primary" id="search">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
                 </span>
                 <div class="error-modal hidden1">
                     <h2>Could not contact server, please try again later.</h2>
@@ -73,12 +76,15 @@
         </main>
     </div>
 
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVS7LK5fK8PsA0nA9Ejl0xGkOwy-GEusE&libraries=&v=weekly"
         defer></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
     <script src="app.js"></script>
+
 </body>
 
 </html>
