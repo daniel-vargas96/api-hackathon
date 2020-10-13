@@ -139,6 +139,12 @@ thead,
     margin-top: 3rem;
 }
 
+.search-bar {
+    width: 400px;
+    height: 50px;
+    font-size: 30px;
+}
+
 #map {
     position: relative;
     justify-content: center;
@@ -187,12 +193,6 @@ thead,
         overflow-x: hidden;
     }
 
-    .gif-background {
-        background-image: url('https://media1.giphy.com/media/61UvNbsIV7tuSrUGiQ/giphy.gif?cid=ecf05e47476a9031fc39fc994abc4fe8e1e92593d5903a4c&rid=giphy.gif');
-        background-size: contain;
-        background-color: rgb(243, 117, 85);
-    }
-
     .container {
     background: rgba(221, 221, 221, 0);
     box-shadow: none;
@@ -200,6 +200,10 @@ thead,
 
     header {
         margin-top: 2rem;
+    }
+
+    .title {
+        font-size: 60px;
     }
 
     .error-modal {
@@ -224,6 +228,12 @@ thead,
         height: 350px;
         zoom: 1;
     }
+
+    .search-bar {
+    width: 200px;
+    height: 40px;
+    font-size: 30px;
+}
 }
 
 /* iPhone 6,7,8 Landscape */
@@ -235,12 +245,6 @@ and (orientation : landscape) {
         background-position: center;
         background-size: 100% 1400vh;
         overflow-x: hidden;
-    }
-
-    .gif-background {
-        background-image: url('https://media1.giphy.com/media/61UvNbsIV7tuSrUGiQ/giphy.gif?cid=ecf05e47476a9031fc39fc994abc4fe8e1e92593d5903a4c&rid=giphy.gif');
-        background-size: contain;
-        background-color: rgb(243, 117, 85);
     }
 
     .container {
@@ -274,9 +278,6 @@ and (orientation : portrait) {
         background-position: center;
         background-size: 100% 1400vh;
         overflow-x: hidden;
-        background-image: url('https://media1.giphy.com/media/61UvNbsIV7tuSrUGiQ/giphy.gif?cid=ecf05e47476a9031fc39fc994abc4fe8e1e92593d5903a4c&rid=giphy.gif');
-        background-size: contain;
-        background-color: rgb(243, 117, 85);
         position: relative;
         top: 2rem;
     }
@@ -285,6 +286,12 @@ and (orientation : portrait) {
     background: rgba(221, 221, 221, 0);
     box-shadow: none;
     }
+
+    .search-bar {
+    width: 200px;
+    height: 40px;
+    font-size: 30px;
+}
 
 }
 
@@ -296,12 +303,6 @@ and (orientation : portrait) {
         background-position: center;
         background-size: 100% 1400vh;
         overflow-x: hidden;
-    }
-
-    .gif-background {
-        background-image: url('https://media1.giphy.com/media/61UvNbsIV7tuSrUGiQ/giphy.gif?cid=ecf05e47476a9031fc39fc994abc4fe8e1e92593d5903a4c&rid=giphy.gif');
-        background-size: contain;
-        background-color: rgb(243, 117, 85);
     }
 
     .container {
