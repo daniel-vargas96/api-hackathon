@@ -26,6 +26,10 @@ background: linear-gradient(144deg, rgba(221,94,137,1) 0%, rgba(247,187,151,1) 1
 
 }
 
+.input-error {
+    color: white;
+}
+
 .statsText {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.4);
     border-radius: 30px;
