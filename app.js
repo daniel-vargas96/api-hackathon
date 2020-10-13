@@ -148,6 +148,7 @@ function initMap(data) {
       //LOCATION OF THE CENTER OF THE MAP
       const options = {
         zoom: 5.5,
+        disableDefaultUI: true
       };
 
       //INITIALIZE AND ADD MAP
@@ -211,6 +212,7 @@ function initMap(data) {
 //RESETS MAP AND TABLE
 function resetPage() {
   tbody.textContent = '';
+  document.body.style.backgroundImage = "url('https://media1.giphy.com/media/61UvNbsIV7tuSrUGiQ/giphy.gif?cid=ecf05e47476a9031fc39fc994abc4fe8e1e92593d5903a4c&rid=giphy.gif')";
   const resetButton = document.querySelector('.btn-danger');
   resetButton.remove();
   search.classList.remove("hidden1");
@@ -236,6 +238,7 @@ helpButton.addEventListener('click', () => {
 //CALLBACK FUNCTION FOR THE SEARCH BUTTON EVENT LISTENER
 function start() {
   searchError();
+  document.body.style.backgroundImage = "url('')";
   loadingIcon.classList.remove("hidden1");
   inputError.classList.add("hidden");
   handleBeersCall();
