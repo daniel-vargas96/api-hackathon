@@ -232,7 +232,7 @@ thead,
     .search-bar {
     width: 200px;
     height: 40px;
-    font-size: 30px;
+    font-size: 20px;
 }
 }
 
@@ -290,7 +290,7 @@ and (orientation : portrait) {
     .search-bar {
     width: 200px;
     height: 40px;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 }
