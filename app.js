@@ -147,7 +147,8 @@ function initMap(data) {
       //LOCATION OF THE CENTER OF THE MAP
       const options = {
         zoom: 13,
-        disableDefaultUI: true
+        disableDefaultUI: true,
+        gestureHandling: 'greedy'
       };
 
       //INITIALIZE AND ADD MAP
